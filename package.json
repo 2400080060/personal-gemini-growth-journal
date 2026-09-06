@@ -1,0 +1,25 @@
+{
+  "name": "personal-gemini-journal",
+  "version": "1.0.0",
+  "description": "AI-powered personal growth journal built with Gemini, Firebase, Firestore, and Cloud Run.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build:frontend": "esbuild src/frontend.js --bundle --format=esm --outfile=public/app.js"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^2.21.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "firebase": "^12.18.0",
+    "firebase-admin": "^13.4.0",
+    "helmet": "^8.3.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.2",
+    "nodemon": "^3.1.14"
+  }
+}
