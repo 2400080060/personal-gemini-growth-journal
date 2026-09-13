@@ -3,35 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A private AI journal that turns reflections into personal growth intelligence.">
   <title>Personal Gemini Growth Journal</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
-
 <body>
   <main class="container">
-    <section class="card">
-      <h1>Personal Gemini Growth Journal</h1>
+    <section class="hero card" id="authCard">
+      <div class="eyebrow">✦ GEMINI POWERED</div>
+      <h1>Turn your history into <span>growth intelligence.</span></h1>
+      <p id="status">A private space to reflect, discover patterns, and turn intentions into action.</p>
+      <button id="signInButton" class="primary">Continue with Google</button>
+      <button id="redirectSignInButton" class="ghost" hidden>Use redirect sign-in</button>
+      <p class="privacy">Your journal is tied to your Firebase account. Your data is scoped to your user ID.</p>
+    </section>
 
-      <p id="status">
-        Your personal growth journey starts here.
-      </p>
+    <section class="app-shell" id="appShell" hidden>
+      <header class="topbar">
+        <div><div class="eyebrow">PERSONAL GROWTH OS</div><h2>Good to see you, <span id="userName"></span>.</h2></div>
+        <div class="account"><span id="userEmail"></span><button id="signOutButton" class="ghost">Sign out</button></div>
+      </header>
 
-      <button id="signInButton">
-        Sign in with Google
-      </button>
+      <nav class="tabs" aria-label="Journal navigation">
+        <button class="tab active" data-tab="journal">Journal</button>
+        <button class="tab" data-tab="insights">Patterns</button>
+        <button class="tab" data-tab="goals">Goals</button>
+        <button class="tab" data-tab="assistant">Growth Assistant</button>
+      </nav>
 
-      <div id="userSection" hidden>
-        <p>Signed in as:</p>
-        <strong id="userName"></strong>
-        <p id="userEmail"></p>
+      <section class="tab-panel active" id="tab-journal">
+        <div class="section-head"><div><h3>What happened today?</h3><p>Write naturally. Gemini will turn the reflection into useful signals.</p></div><span class="pill">Private</span></div>
+        <textarea id="journalText" maxlength="8000" placeholder="Today I...&#10;&#10;What went well? What was difficult? What do I want to do differently tomorrow?"></textarea>
+        <div class="composer"><span id="journalCount">0 / 8000</span><button id="saveJournal" class="primary">Reflect & save ✦</button></div>
+        <div id="journalResult" class="result" hidden></div>
+        <div class="section-head history-head"><div><h3>Your story</h3><p>Your recent reflections, in your own words.</p></div><button id="refreshJournals" class="ghost">Refresh</button></div>
+        <div id="journalList" class="journal-list"></div>
+      </section>
 
-        <button id="signOutButton">
-          Sign out
-        </button>
-      </div>
+      <section class="tab-panel" id="tab-insights" hidden>
+        <div class="section-head"><div><h3>Patterns, not guesses.</h3><p>Gemini looks across your journal history for repeated evidence.</p></div><button id="generateInsights" class="primary">Find patterns</button></div>
+        <div id="insightsResult" class="insight-grid"><div class="empty">Add a few journal entries first, then unlock your personal patterns.</div></div>
+      </section>
+
+      <section class="tab-panel" id="tab-goals" hidden>
+        <div class="section-head"><div><h3>Goals vs reality</h3><p>State an intention, then let your history become evidence.</p></div></div>
+        <div class="goal-form"><input id="goalTitle" maxlength="200" placeholder="Goal — e.g. Study consistently"><input id="goalDescription" maxlength="1000" placeholder="What would progress look like?"><button id="addGoal" class="primary">Add goal</button></div>
+        <div id="goalList" class="goal-list"></div>
+        <div class="plan-card"><div><span class="eyebrow">30-DAY GROWTH PLAN</span><h3>Turn your evidence into a plan.</h3><p>Generates four focused weeks from your active goals and journal patterns.</p></div><button id="generatePlan" class="primary">Generate plan</button></div>
+        <div id="planResult" class="result" hidden></div>
+      </section>
+
+      <section class="tab-panel" id="tab-assistant" hidden>
+        <div class="section-head"><div><h3>Your Growth Assistant</h3><p>Ask questions grounded in your own journals and active goals.</p></div></div>
+        <div id="chatMessages" class="chat"></div>
+        <form id="chatForm" class="chat-form"><input id="chatInput" maxlength="4000" autocomplete="off" placeholder="What pattern should I pay attention to?"><button class="primary" type="submit">Send</button></form>
+      </section>
     </section>
   </main>
-
   <script type="module" src="/app.js"></script>
 </body>
 </html>

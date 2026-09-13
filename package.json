@@ -16,7 +16,8 @@
     "express": "^5.2.1",
     "firebase": "^12.18.0",
     "firebase-admin": "^13.4.0",
-    "helmet": "^8.3.0"
+    "helmet": "^8.3.0",
+    "@google-cloud/secret-manager": "^6.1.0"
   },
   "devDependencies": {
     "esbuild": "^0.25.2",
